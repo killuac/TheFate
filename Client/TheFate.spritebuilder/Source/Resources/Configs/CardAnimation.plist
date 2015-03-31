@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>damaged</key>
+	<dict>
+		<key>plistName</key>
+		<string>Damage.plist</string>
+		<key>frameName</key>
+		<string>Damage</string>
+		<key>frameCount</key>
+		<integer>9</integer>
+	</dict>
+	<key>restoreHp</key>
+	<dict>
+		<key>plistName</key>
+		<string>Restoration.plist</string>
+		<key>frameName</key>
+		<string>Restoration</string>
+		<key>frameCount</key>
+		<integer>20</integer>
+	</dict>
+	<key>NormalAttack</key>
+	<dict>
+		<key>plistName</key>
+		<string>NormalAttack.plist</string>
+		<key>frameName</key>
+		<string>NormalAttack</string>
+		<key>frameCount</key>
+		<integer>29</integer>
+	</dict>
+	<key>Evasion</key>
+	<dict>
+		<key>plistName</key>
+		<string>Evasion.plist</string>
+		<key>frameName</key>
+		<string>Evasion</string>
+		<key>frameCount</key>
+		<integer>14</integer>
+	</dict>
+</dict>
+</plist>

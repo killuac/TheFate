@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.woodeck.fate.mapper.UserHeroMapper">
+  <resultMap id="BaseResultMap" type="com.woodeck.fate.model.UserHero">
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+    <id column="hero_id" jdbcType="INTEGER" property="heroId" />
+    <result column="is_permanent" jdbcType="BIT" property="isPermanent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, hero_id, is_permanent
+  </sql>
+  <select id="selectUserHerosByUserId" resultMap="BaseResultMap" parameterType="map" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_hero
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from user_hero
+    where user_id = #{userId,jdbcType=INTEGER}
+      and hero_id = #{heroId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.woodeck.fate.model.UserHero">
+    insert into user_hero (user_id, hero_id, is_permanent
+      )
+    values (#{userId,jdbcType=INTEGER}, #{heroId,jdbcType=INTEGER}, #{isPermanent,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.woodeck.fate.model.UserHero">
+    insert into user_hero
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="heroId != null">
+        hero_id,
+      </if>
+      <if test="isPermanent != null">
+        is_permanent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="heroId != null">
+        #{heroId,jdbcType=INTEGER},
+      </if>
+      <if test="isPermanent != null">
+        #{isPermanent,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.woodeck.fate.model.UserHero">
+    update user_hero
+    <set>
+      <if test="isPermanent != null">
+        is_permanent = #{isPermanent,jdbcType=BIT},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+      and hero_id = #{heroId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.woodeck.fate.model.UserHero">
+    update user_hero
+    set is_permanent = #{isPermanent,jdbcType=BIT}
+    where user_id = #{userId,jdbcType=INTEGER}
+      and hero_id = #{heroId,jdbcType=INTEGER}
+  </update>
+</mapper>

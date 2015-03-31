@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.woodeck.fate.mapper.LoginHistoryMapper" >
+  <resultMap id="BaseResultMap" type="com.woodeck.fate.model.LoginHistory" >
+    <id column="login_id" property="loginId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="ip_address" property="ipAddress" jdbcType="VARCHAR" />
+    <result column="location" property="location" jdbcType="VARCHAR" />
+    <result column="login_time" property="loginTime" jdbcType="TIMESTAMP" />
+    <result column="logout_time" property="logoutTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    login_id, user_id, ip_address, location, login_time, logout_time
+  </sql>
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from login_history
+    where user_id = #{userId,jdbcType=INTEGER}
+    and logout_time is null
+    order by login_time desc limit 1
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from login_history
+    where login_id = #{loginId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.woodeck.fate.model.LoginHistory" >
+    insert into login_history (login_id, user_id, ip_address, 
+      location, login_time, logout_time
+      )
+    values (#{loginId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{ipAddress,jdbcType=VARCHAR}, 
+      #{location,jdbcType=VARCHAR}, #{loginTime,jdbcType=TIMESTAMP}, #{logoutTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.woodeck.fate.model.LoginHistory" >
+    insert into login_history
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="loginId != null" >
+        login_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="ipAddress != null" >
+        ip_address,
+      </if>
+      <if test="location != null" >
+        location,
+      </if>
+      <if test="loginTime != null" >
+        login_time,
+      </if>
+      <if test="logoutTime != null" >
+        logout_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="loginId != null" >
+        #{loginId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="ipAddress != null" >
+        #{ipAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null" >
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null" >
+        #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logoutTime != null" >
+        #{logoutTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.woodeck.fate.model.LoginHistory" >
+    update login_history
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="ipAddress != null" >
+        ip_address = #{ipAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null" >
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTime != null" >
+        login_time = #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logoutTime != null" >
+        logout_time = #{logoutTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where login_id = #{loginId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.woodeck.fate.model.LoginHistory" >
+    update login_history
+    set user_id = #{userId,jdbcType=INTEGER},
+      ip_address = #{ipAddress,jdbcType=VARCHAR},
+      location = #{location,jdbcType=VARCHAR},
+      login_time = #{loginTime,jdbcType=TIMESTAMP},
+      logout_time = #{logoutTime,jdbcType=TIMESTAMP}
+    where login_id = #{loginId,jdbcType=INTEGER}
+  </update>
+</mapper>

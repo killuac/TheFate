@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>victory</key>
+	<integer>20</integer>
+	<key>failure</key>
+	<integer>10</integer>
+	<key>escape</key>
+	<integer>-50</integer>
+	<key>killEnemy</key>
+	<integer>5</integer>
+	<key>doubleKill</key>
+	<integer>5</integer>
+	<key>tripleKill</key>
+	<integer>10</integer>
+</dict>
+</plist>

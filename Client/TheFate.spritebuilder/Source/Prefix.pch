@@ -1,0 +1,35 @@
+//
+// Prefix header for all source files of the 'Test' target in the 'Test' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iPhone SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+#if __CC_PLATFORM_IOS
+#import <UIKit/UIKit.h>
+#endif
+#import <Foundation/Foundation.h>
+#import "cocos2d.h"
+#import "cocos2d-ui.h"
+#import "CCBuilderReader.h"
+
+#import "ElectroServer.h"
+#import "CCNode+BGNode.h"
+#import "CCButton+BGButton.h"
+#import "CCSprite+BGSprite.h"
+#import "CCSlider+BGSlider.h"
+#import "CCLabelTTF+BGLabelTTF.h"
+#import "CCTextField+BGTextField.h"
+#import "CCPlatformTextField+BGPlatformTextField.h"
+#import "CCTouch+BGTouch.h"
+#import "CCEffectNode+BGEffectNode.h"
+#import "EsUser+BGUser.h"
+#import "EsRoom+BGRoom.h"
+#import "BGLayoutBox.h"
+#import "BGCheckBox.h"
+#import "BGRadioButton.h"
+#endif

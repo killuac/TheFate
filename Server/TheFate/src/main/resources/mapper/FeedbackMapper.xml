@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.woodeck.fate.mapper.FeedbackMapper">
+  <resultMap id="BaseResultMap" type="com.woodeck.fate.model.Feedback">
+    <id column="feedback_id" jdbcType="INTEGER" property="feedbackId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="issue_category" jdbcType="VARCHAR" property="issueCategory" />
+    <result column="feedback_time" jdbcType="TIMESTAMP" property="feedbackTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.woodeck.fate.model.Feedback">
+    <result column="issue_title" jdbcType="LONGVARCHAR" property="issueTitle" />
+    <result column="issue_content" jdbcType="LONGVARCHAR" property="issueContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    feedback_id, user_id, issue_category, feedback_time
+  </sql>
+  <sql id="Blob_Column_List">
+    issue_title, issue_content
+  </sql>
+  <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from feedback
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from feedback
+    where feedback_id = #{feedbackId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.woodeck.fate.model.Feedback">
+    insert into feedback (feedback_id, user_id, issue_category, 
+      feedback_time, issue_title, issue_content
+      )
+    values (#{feedbackId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{issueCategory,jdbcType=VARCHAR}, 
+      #{feedbackTime,jdbcType=TIMESTAMP}, #{issueTitle,jdbcType=LONGVARCHAR}, #{issueContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.woodeck.fate.model.Feedback">
+    insert into feedback
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="feedbackId != null">
+        feedback_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="issueCategory != null">
+        issue_category,
+      </if>
+      <if test="feedbackTime != null">
+        feedback_time,
+      </if>
+      <if test="issueTitle != null">
+        issue_title,
+      </if>
+      <if test="issueContent != null">
+        issue_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="feedbackId != null">
+        #{feedbackId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="issueCategory != null">
+        #{issueCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackTime != null">
+        #{feedbackTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="issueTitle != null">
+        #{issueTitle,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="issueContent != null">
+        #{issueContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.woodeck.fate.model.Feedback">
+    update feedback
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="issueCategory != null">
+        issue_category = #{issueCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="feedbackTime != null">
+        feedback_time = #{feedbackTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="issueTitle != null">
+        issue_title = #{issueTitle,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="issueContent != null">
+        issue_content = #{issueContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where feedback_id = #{feedbackId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.woodeck.fate.model.Feedback">
+    update feedback
+    set user_id = #{userId,jdbcType=INTEGER},
+      issue_category = #{issueCategory,jdbcType=VARCHAR},
+      feedback_time = #{feedbackTime,jdbcType=TIMESTAMP},
+      issue_title = #{issueTitle,jdbcType=LONGVARCHAR},
+      issue_content = #{issueContent,jdbcType=LONGVARCHAR}
+    where feedback_id = #{feedbackId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.woodeck.fate.model.Feedback">
+    update feedback
+    set user_id = #{userId,jdbcType=INTEGER},
+      issue_category = #{issueCategory,jdbcType=VARCHAR},
+      feedback_time = #{feedbackTime,jdbcType=TIMESTAMP}
+    where feedback_id = #{feedbackId,jdbcType=INTEGER}
+  </update>
+</mapper>

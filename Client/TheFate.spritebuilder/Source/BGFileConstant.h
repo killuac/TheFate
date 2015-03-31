@@ -1,0 +1,115 @@
+//
+//  BGFileConstant.h
+//  FateClient
+//
+//  Created by Killua Liu on 7/2/13.
+//
+//
+
+#ifndef FateClient_BGFileConstant_h
+#define FateClient_BGFileConstant_h
+
+#define kXmlSettings                    @"settings.xml"
+#define kClassPrefix                    @"BG"
+
+#define kFileTypeCCBI                   @"ccbi"
+#define kFileTypePLIST                  @"plist"
+#define kFileTypePNG                    @"png"
+#define kFileTypeJPG                    @"jpg"
+#define kFileTypeFNT                    @"fnt"
+#define kFileTypeCAF                    @"caf"
+#define kFileTypeWAV                    @"wav"
+
+#define kPlistGameSetting               @"GameSetting"
+#define kPlistPlayingCardIds            @"PlayingCardIds"
+#define kPlistPlayingCardList           @"PlayingCardList"
+#define kPlistHeroSkillList             @"HeroSkillList"
+#define kPlistHeroCardList              @"HeroCardList"
+#define kPlistFateCardList              @"FateCardList"
+#define kPlistRoleCardList              @"RoleCardList"
+#define kPlistCardAnimation             @"CardAnimation"
+#define kPlistTextPrompt                @"TextPrompt"
+#define kPlistChatPhrase                @"ChatPhrase"
+#define kPlistActionHistory             @"ActionHistory"
+#define kPlistMerchandise               @"Merchandise"
+
+#define kCcbiLoginScene                 @"LoginScene.ccbi"
+#define kCcbiInformation                @"Information.ccbi"
+#define kCcbiRegisterPopup              @"RegisterPopup.ccbi"
+#define kCcbiAlertPopup                 @"AlertPopup.ccbi"
+#define kCcbiZoneScene                  @"ZoneScene.ccbi"
+#define kCcbiFeedback                   @"Feedback.ccbi"
+#define kCcbiGameSetting                @"GameSetting.ccbi"
+#define kCcbiRoomFinder                 @"RoomFinder.ccbi"
+#define kCcbiRoomCreation               @"RoomCreation.ccbi"
+#define kCcbiRoomSetting                @"RoomSetting.ccbi"
+#define kCcbiStoreScene                 @"StoreScene.ccbi"
+#define kCcbiMerchandise                @"Merchandise.ccbi"
+#define kCcbiRoomScene                  @"RoomScene"
+#define kCcbiGameScene                  @"GameScene"
+#define kCcbiGameOver                   @"GameOver"
+#define kCcbiGameOverCell               @"GameOverCell.ccbi"
+#define kCcbiUserInformation            @"UserInformation.ccbi"
+#define kCcbiPlayerInformation          @"PlayerInformation.ccbi"
+#define kCcbiChatPopup                  @"ChatPopup.ccbi"
+#define kCcbiBubble                     @"Bubble.ccbi"
+#define kCcbiHistoryPopup               @"HistoryPopup.ccbi"
+#define kCcbiCardPopup                  @"CardPopup.ccbi"
+#define kCcbiAssigningPopup             @"AssigningPopup.ccbi"
+#define kCcbiCardSlot                   @"CardSlot.ccbi"
+#define kCcbiCardInformation            @"CardInformation.ccbi"
+#define kCcbiHeroInformation            @"HeroInformation.ccbi"
+#define kCcbiCardSprite                 @"CardSprite.ccbi"
+#define kCcbiEquipSprite                @"EquipSprite.ccbi"
+#define kCcbiHeroSprite                 @"HeroSprite.ccbi"
+
+#define kImageLoading                   @"LoginArtwork/Loading.png"
+#define kImageCheckBoxTick              @"LoginArtwork/CheckBoxTick.png"
+#define kImageRadioButtonDot            @"LoginArtwork/RadioButtonDot.png"
+#define kImageSliderHighlighted         @"LoginArtwork/SliderHighlighted.png"
+#define kImageDefaultAvatar             @"ZoneArtwork/DefaultAvatar.png"
+
+#define kImageFactionSentinel           @"GameArtwork/FactionSentinel.png"
+#define kImageFactionScourge            @"GameArtwork/FactionScourge.png"
+#define kImageFactionNeutral            @"GameArtwork/FactionNeutral.png"
+#define kImageRoleUnknow                @"GameArtwork/RoleUnknow.png"
+#define kImageCountFrameAgility         @"GameArtwork/CountFrameAgility.png"
+#define kImageCountFrameIntelligence    @"GameArtwork/CountFrameIntelligence.png"
+#define kImageCountFrameStrength        @"GameArtwork/CountFrameStrength.png"
+#define kImagePlayingCardBack           @"PlayingCard/PlayingCardBack.png"
+
+#define kImageHpGreen                   @"GameArtwork/HpGreen.png"
+#define kImageHpYellow                  @"GameArtwork/HpYellow.png"
+#define kImageHpRed                     @"GameArtwork/HpRed.png"
+#define kImageHpEmpty                   @"GameArtwork/HpEmpty.png"
+#define kImageSp                        @"GameArtwork/Sp.png"
+#define kImageSpEmpty                   @"GameArtwork/SpEmpty.png"
+#define kImageProgressBar               @"GameArtwork/ProgressBar.png"
+#define kImageProgressBarFrame          @"GameArtwork/ProgressBarFrame.png"
+#define kImageTargetLinePath            @"GameArtwork/TargetLinePath.png"
+
+#define kImageOkay                      @"GameArtwork/Okay.png"
+#define kImageOkayDisabled              @"GameArtwork/OkayDisabled.png"
+#define kImageCancel                    @"GameArtwork/Cancel.png"
+#define kImageCancelDisabled            @"GameArtwork/CancelDisabled.png"
+#define kImageDiscard                   @"GameArtwork/Discard.png"
+#define kImageDiscardDisabled           @"GameArtwork/DiscardDisabled.png"
+#define kImageButtonHearts              @"GameArtwork/ButtonHearts.png"
+#define kImageButtonDiamonds            @"GameArtwork/ButtonDiamonds.png"
+#define kImageButtonSpades              @"GameArtwork/ButtonSpades.png"
+#define kImageButtonClubs               @"GameArtwork/ButtonClubs.png"
+#define kImageButtonRed                 @"GameArtwork/ButtonRed.png"
+#define kImageButtonBlack               @"GameArtwork/ButtonBlack.png"
+#define kImageSkill                     @"GameArtwork/Skill.png"
+#define kImageSkillSelected             @"GameArtwork/SkillSelected.png"
+
+#define kImagePopupAllCards             @"CardPopup/PopupAllCards.png"
+#define kImagePopupHandCard             @"CardPopup/PopupHandCard.png"
+#define kImagePopupAssignedCard         @"CardPopup/PopupAssignedCard"
+
+#define kFontFateTask                   @"Fonts/FateTask.bmfont/FateTask.fnt"
+#define kFontRoleTextTip                @"Fonts/RoleTextTip.bmfont/RoleTextTip.fnt"
+#define kFontHeroName                   @"Fonts/HeroName.bmfont/HeroName"
+#define kFontEquipmentName              @"Fonts/EquipmentName.bmfont/EquipmentName"
+
+#endif

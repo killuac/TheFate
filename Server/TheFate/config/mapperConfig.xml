@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>	
+	<mappers>
+	  <!-- <package name="com.woodeck.fate.xml"/> -->
+	  <mapper resource="mapper/UserMapper.xml" />
+	  <mapper resource="mapper/UserHeroMapper.xml" />
+	  <mapper resource="mapper/LevelExpMapper.xml" />
+	  <mapper resource="mapper/FeedbackMapper.xml" />
+	  <mapper resource="mapper/LoginHistoryMapper.xml" />
+	  <mapper resource="mapper/BuyHistoryMapper.xml" />
+	</mappers>
+</configuration>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.woodeck.fate.mapper.LevelExpMapper" >
+  <resultMap id="BaseResultMap" type="com.woodeck.fate.model.LevelExp" >
+    <id column="level" property="level" jdbcType="TINYINT" />
+    <result column="experience" property="experience" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    level, experience
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Byte" >
+    select 
+    <include refid="Base_Column_List" />
+    from level_experience
+    where level = #{level,jdbcType=TINYINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Byte" >
+    delete from level_experience
+    where level = #{level,jdbcType=TINYINT}
+  </delete>
+  <insert id="insert" parameterType="com.woodeck.fate.model.LevelExp" >
+    insert into level_experience (level, experience)
+    values (#{level,jdbcType=TINYINT}, #{experience,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.woodeck.fate.model.LevelExp" >
+    insert into level_experience
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="experience != null" >
+        experience,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="level != null" >
+        #{level,jdbcType=TINYINT},
+      </if>
+      <if test="experience != null" >
+        #{experience,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.woodeck.fate.model.LevelExp" >
+    update level_experience
+    <set >
+      <if test="experience != null" >
+        experience = #{experience,jdbcType=INTEGER},
+      </if>
+    </set>
+    where level = #{level,jdbcType=TINYINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.woodeck.fate.model.LevelExp" >
+    update level_experience
+    set experience = #{experience,jdbcType=INTEGER}
+    where level = #{level,jdbcType=TINYINT}
+  </update>
+</mapper>

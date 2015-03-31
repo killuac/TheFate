@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<string>---根据不同的game_state值决定显示的文本提示内容(&quot;0&quot;表示空的game_state)---</string>
+	<string>你的身份是“&amp;”，下家的身份是“&amp;”</string>
+	<string>请选择1张卡牌拼点，点数最大的玩家为起始玩家(♠&gt;♥&gt;♣&gt;♦)</string>
+	<string>(回合开始阶段)</string>
+	<string>出牌阶段请选择要使用的卡牌</string>
+	<string>(被动出牌阶段: 文本提示内容根据当前角色使用的不同卡牌或技能来显示)......</string>
+	<string>(是否发动英雄或装备技能: 文本提示内容根据不同的技能ID或装备牌ID来显示)......</string>
+	<string>(指定目标阶段: 文本提示内容根据当前角色触发的不同英雄技能来显示)......</string>
+	<string>请选择一种颜色</string>
+	<string>请选择一种花色</string>
+	<string>请选择你需要的卡牌</string>
+	<string>请选择&amp;张手牌交给目标角色</string>
+	<string>请选择你要弃掉的卡牌</string>
+	<string>请分配每个角色将要得到的卡牌（通过拖拽来交换卡牌位置）</string>
+	<string>(弃/弃置牌阶段: 文本提示内容根据当前角色使用的不同卡牌或技能来显示)......</string>
+	<string>弃牌阶段请弃置&amp;张多余的手牌</string>
+	<string>&amp;处于濒死状态，需要&amp;张【治疗药膏】，是否解救？</string>
+	<string>(等待驱散阶段: 文本提示内容根据当前角色使用的不同卡牌或技能来显示)......</string>
+	<string>请选择：【确定】查看任意1名存活角色的身份牌，【取消】摸2张牌</string>
+</array>
+</plist>

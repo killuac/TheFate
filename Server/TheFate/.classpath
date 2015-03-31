@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="target/classes" path="src/main/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry excluding="**" kind="src" output="target/classes" path="src/main/resources">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="src/client/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Applications/ElectroServer_5_4_1/apis/server/java/dist/ElectroServer5.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/Applications/ElectroServer_5_4_1/apis/server/java/docs/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/Killua/Workspace/Java/libraries/property-list-2.0.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://plist.sourceforge.net/lib/doc/2.0.0/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/Killua/Workspace/Java/libraries/dbpool-6.0.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://www.snaq.net/java/DBPool/6.0/apidocs/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Applications/ElectroServer_5_4_1/apis/client/java/dist/ElectroServer-5-Java-Client.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/Applications/ElectroServer_5_4_1/apis/client/java/docs/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

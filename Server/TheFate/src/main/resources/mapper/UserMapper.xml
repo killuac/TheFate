@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.woodeck.fate.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.woodeck.fate.model.User" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="TINYINT" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="is_vip" property="isVip" jdbcType="BIT" />
+    <result column="vip_type" property="vipType" jdbcType="TINYINT" />
+    <result column="discount" property="discount" jdbcType="FLOAT" />
+    <result column="add_ep_rate" property="addEpRate" jdbcType="FLOAT" />
+    <result column="vip_valid_time" property="vipValidTime" jdbcType="TIMESTAMP" />
+    <result column="gold_coin" property="goldCoin" jdbcType="INTEGER" />
+    <result column="level" property="level" jdbcType="TINYINT" />
+    <result column="exp_point" property="expPoint" jdbcType="INTEGER" />
+    <result column="candidate_hero_count" property="candidateHeroCount" jdbcType="TINYINT" />
+    <result column="add_candidate_count" property="addCandidateCount" jdbcType="TINYINT" />
+    <result column="sentinel_victory_count" property="sentinelVictoryCount" jdbcType="INTEGER" />
+    <result column="scourge_victory_count" property="scourgeVictoryCount" jdbcType="INTEGER" />
+    <result column="neutral_victory_count" property="neutralVictoryCount" jdbcType="INTEGER" />
+    <result column="sentinel_failure_count" property="sentinelFailureCount" jdbcType="INTEGER" />
+    <result column="scourge_failure_count" property="scourgeFailureCount" jdbcType="INTEGER" />
+    <result column="neutral_failure_count" property="neutralFailureCount" jdbcType="INTEGER" />
+    <result column="escape_count" property="escapeCount" jdbcType="INTEGER" />
+    <result column="kill_enemy_count" property="killEnemyCount" jdbcType="INTEGER" />
+    <result column="doubleKill_count" property="doublekillCount" jdbcType="INTEGER" />
+    <result column="tripleKill_count" property="triplekillCount" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.woodeck.fate.model.User" extends="BaseResultMap" >
+    <result column="avatar" property="avatar" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_id, user_name, password, nick_name, gender, email, is_vip, vip_type, discount, add_ep_rate, 
+    vip_valid_time, gold_coin, level, exp_point, candidate_hero_count, add_candidate_count, sentinel_victory_count, 
+    scourge_victory_count, neutral_victory_count, sentinel_failure_count, scourge_failure_count, 
+    neutral_failure_count, escape_count, kill_enemy_count, doubleKill_count, tripleKill_count, 
+    create_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    avatar
+  </sql>
+  <select id="selectUserCount" resultType="java.lang.Integer" >
+    select count(*) from user
+  </select>
+  <select id="selectByUserName" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from user
+    where user_name = #{userName,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.woodeck.fate.model.User" >
+    insert into user (user_id, user_name, password, 
+      nick_name, gender, email, 
+      is_vip, vip_type, discount, add_ep_rate, 
+      vip_valid_time, gold_coin, level, 
+      exp_point, candidate_hero_count, add_candidate_count, sentinel_victory_count, 
+      scourge_victory_count, neutral_victory_count, 
+      sentinel_failure_count, scourge_failure_count, 
+      neutral_failure_count, escape_count, kill_enemy_count, 
+      doubleKill_count, tripleKill_count, create_time, 
+      avatar)
+    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{nickName,jdbcType=VARCHAR}, #{gender,jdbcType=TINYINT}, #{email,jdbcType=VARCHAR}, 
+      #{isVip,jdbcType=BIT}, #{vipType,jdbcType=TINYINT}, #{discount,jdbcType=FLOAT}, #{addEpRate,jdbcType=FLOAT}, 
+      #{vipValidTime,jdbcType=TIMESTAMP}, #{goldCoin,jdbcType=INTEGER}, #{level,jdbcType=TINYINT}, 
+      #{expPoint,jdbcType=INTEGER}, #{candidateHeroCount,jdbcType=TINYINT}, #{addCandidateCount,jdbcType=TINYINT},
+      #{sentinelVictoryCount,jdbcType=INTEGER}, #{scourgeVictoryCount,jdbcType=INTEGER}, #{neutralVictoryCount,jdbcType=INTEGER}, 
+      #{sentinelFailureCount,jdbcType=INTEGER}, #{scourgeFailureCount,jdbcType=INTEGER}, #{neutralFailureCount,jdbcType=INTEGER},
+      #{escapeCount,jdbcType=INTEGER}, #{killEnemyCount,jdbcType=INTEGER}, #{doublekillCount,jdbcType=INTEGER},
+      #{triplekillCount,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{avatar,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.woodeck.fate.model.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="nickName != null" >
+        nick_name,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="isVip != null" >
+        is_vip,
+      </if>
+      <if test="vipType != null" >
+        vip_type,
+      </if>
+      <if test="discount != null" >
+        discount,
+      </if>
+      <if test="addEpRate != null" >
+        add_ep_rate,
+      </if>
+      <if test="vipValidTime != null" >
+        vip_valid_time,
+      </if>
+      <if test="goldCoin != null" >
+        gold_coin,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="expPoint != null" >
+        exp_point,
+      </if>
+      <if test="candidateHeroCount != null" >
+        candidate_hero_count,
+      </if>
+      <if test="addCandidateCount != null" >
+        add_candidate_count,
+      </if>
+      <if test="sentinelVictoryCount != null" >
+        sentinel_victory_count,
+      </if>
+      <if test="scourgeVictoryCount != null" >
+        scourge_victory_count,
+      </if>
+      <if test="neutralVictoryCount != null" >
+        neutral_victory_count,
+      </if>
+      <if test="sentinelFailureCount != null" >
+        sentinel_failure_count,
+      </if>
+      <if test="scourgeFailureCount != null" >
+        scourge_failure_count,
+      </if>
+      <if test="neutralFailureCount != null" >
+        neutral_failure_count,
+      </if>
+      <if test="escapeCount != null" >
+        escape_count,
+      </if>
+      <if test="killEnemyCount != null" >
+        kill_enemy_count,
+      </if>
+      <if test="doublekillCount != null" >
+        doubleKill_count,
+      </if>
+      <if test="triplekillCount != null" >
+        tripleKill_count,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="avatar != null" >
+        avatar,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="isVip != null" >
+        #{isVip,jdbcType=BIT},
+      </if>
+      <if test="discount != null" >
+        #{discount,jdbcType=FLOAT},
+      </if>
+      <if test="addEpRate != null" >
+        #{addEpRate,jdbcType=FLOAT},
+      </if>
+      <if test="vipValidTime != null" >
+        #{vipValidTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goldCoin != null" >
+        #{goldCoin,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=TINYINT},
+      </if>
+      <if test="expPoint != null" >
+        #{expPoint,jdbcType=INTEGER},
+      </if>
+      <if test="candidateHeroCount != null" >
+        #{candidateHeroCount,jdbcType=TINYINT},
+      </if>
+      <if test="addCandidateCount != null" >
+        #{addCandidateCount,jdbcType=TINYINT},
+      </if>
+      <if test="sentinelVictoryCount != null" >
+        #{sentinelVictoryCount,jdbcType=INTEGER},
+      </if>
+      <if test="scourgeVictoryCount != null" >
+        #{scourgeVictoryCount,jdbcType=INTEGER},
+      </if>
+      <if test="neutralVictoryCount != null" >
+        #{neutralVictoryCount,jdbcType=INTEGER},
+      </if>
+      <if test="sentinelFailureCount != null" >
+        #{sentinelFailureCount,jdbcType=INTEGER},
+      </if>
+      <if test="scourgeFailureCount != null" >
+        #{scourgeFailureCount,jdbcType=INTEGER},
+      </if>
+      <if test="neutralFailureCount != null" >
+        #{neutralFailureCount,jdbcType=INTEGER},
+      </if>
+      <if test="escapeCount != null" >
+        #{escapeCount,jdbcType=INTEGER},
+      </if>
+      <if test="killEnemyCount != null" >
+        #{killEnemyCount,jdbcType=INTEGER},
+      </if>
+      <if test="doublekillCount != null" >
+        #{doublekillCount,jdbcType=INTEGER},
+      </if>
+      <if test="triplekillCount != null" >
+        #{triplekillCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="avatar != null" >
+        #{avatar,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.woodeck.fate.model.User" >
+    update user
+    <set >
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="isVip != null" >
+        is_vip = #{isVip,jdbcType=BIT},
+      </if>
+      <if test="vipType != null" >
+        vip_type = #{vipType,jdbcType=TINYINT},
+      </if>
+      <if test="discount != null" >
+        discount = #{discount,jdbcType=FLOAT},
+      </if>
+      <if test="addEpRate != null" >
+        add_ep_rate = #{addEpRate,jdbcType=FLOAT},
+      </if>
+      <if test="vipValidTime != null" >
+        vip_valid_time = #{vipValidTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="goldCoin != null" >
+        gold_coin = #{goldCoin,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=TINYINT},
+      </if>
+      <if test="expPoint != null" >
+        exp_point = #{expPoint,jdbcType=INTEGER},
+      </if>
+      <if test="candidateHeroCount != null" >
+        candidate_hero_count = #{candidateHeroCount,jdbcType=TINYINT},
+      </if>
+      <if test="addCandidateCount != null" >
+        add_candidate_count = #{addCandidateCount,jdbcType=TINYINT},
+      </if>
+      <if test="sentinelVictoryCount != null" >
+        sentinel_victory_count = #{sentinelVictoryCount,jdbcType=INTEGER},
+      </if>
+      <if test="scourgeVictoryCount != null" >
+        scourge_victory_count = #{scourgeVictoryCount,jdbcType=INTEGER},
+      </if>
+      <if test="neutralVictoryCount != null" >
+        neutral_victory_count = #{neutralVictoryCount,jdbcType=INTEGER},
+      </if>
+      <if test="sentinelFailureCount != null" >
+        sentinel_failure_count = #{sentinelFailureCount,jdbcType=INTEGER},
+      </if>
+      <if test="scourgeFailureCount != null" >
+        scourge_failure_count = #{scourgeFailureCount,jdbcType=INTEGER},
+      </if>
+      <if test="neutralFailureCount != null" >
+        neutral_failure_count = #{neutralFailureCount,jdbcType=INTEGER},
+      </if>
+      <if test="escapeCount != null" >
+        escape_count = #{escapeCount,jdbcType=INTEGER},
+      </if>
+      <if test="killEnemyCount != null" >
+        kill_enemy_count = #{killEnemyCount,jdbcType=INTEGER},
+      </if>
+      <if test="doublekillCount != null" >
+        doubleKill_count = #{doublekillCount,jdbcType=INTEGER},
+      </if>
+      <if test="triplekillCount != null" >
+        tripleKill_count = #{triplekillCount,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="avatar != null" >
+        avatar = #{avatar,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.woodeck.fate.model.User" >
+    update user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=TINYINT},
+      email = #{email,jdbcType=VARCHAR},
+      is_vip = #{isVip,jdbcType=BIT},
+      vip_type = #{vipType,jdbcType=TINYINT},
+      discount = #{discount,jdbcType=FLOAT},
+      add_ep_rate = #{addEpRate,jdbcType=FLOAT},
+      vip_valid_time = #{vipValidTime,jdbcType=TIMESTAMP},
+      gold_coin = #{goldCoin,jdbcType=INTEGER},
+      level = #{level,jdbcType=TINYINT},
+      exp_point = #{expPoint,jdbcType=INTEGER},
+      candidate_hero_count = #{candidateHeroCount,jdbcType=TINYINT},
+      add_candidate_count = #{addCandidateCount,jdbcType=TINYINT},
+      sentinel_victory_count = #{sentinelVictoryCount,jdbcType=INTEGER},
+      scourge_victory_count = #{scourgeVictoryCount,jdbcType=INTEGER},
+      neutral_victory_count = #{neutralVictoryCount,jdbcType=INTEGER},
+      sentinel_failure_count = #{sentinelFailureCount,jdbcType=INTEGER},
+      scourge_failure_count = #{scourgeFailureCount,jdbcType=INTEGER},
+      neutral_failure_count = #{neutralFailureCount,jdbcType=INTEGER},
+      escape_count = #{escapeCount,jdbcType=INTEGER},
+      kill_enemy_count = #{killEnemyCount,jdbcType=INTEGER},
+      doubleKill_count = #{doublekillCount,jdbcType=INTEGER},
+      tripleKill_count = #{triplekillCount,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      avatar = #{avatar,jdbcType=LONGVARBINARY}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.woodeck.fate.model.User" >
+    update user
+    set user_name = #{userName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=TINYINT},
+      email = #{email,jdbcType=VARCHAR},
+      is_vip = #{isVip,jdbcType=BIT},
+      vip_type = #{vipType,jdbcType=TINYINT},
+      discount = #{discount,jdbcType=FLOAT},
+      add_ep_rate = #{addEpRate,jdbcType=FLOAT},
+      vip_valid_time = #{vipValidTime,jdbcType=TIMESTAMP},
+      gold_coin = #{goldCoin,jdbcType=INTEGER},
+      level = #{level,jdbcType=TINYINT},
+      exp_point = #{expPoint,jdbcType=INTEGER},
+      candidate_hero_count = #{candidateHeroCount,jdbcType=TINYINT},
+      add_candidate_count = #{addCandidateCount,jdbcType=TINYINT},
+      sentinel_victory_count = #{sentinelVictoryCount,jdbcType=INTEGER},
+      scourge_victory_count = #{scourgeVictoryCount,jdbcType=INTEGER},
+      neutral_victory_count = #{neutralVictoryCount,jdbcType=INTEGER},
+      sentinel_failure_count = #{sentinelFailureCount,jdbcType=INTEGER},
+      scourge_failure_count = #{scourgeFailureCount,jdbcType=INTEGER},
+      neutral_failure_count = #{neutralFailureCount,jdbcType=INTEGER},
+      escape_count = #{escapeCount,jdbcType=INTEGER},
+      kill_enemy_count = #{killEnemyCount,jdbcType=INTEGER},
+      doubleKill_count = #{doublekillCount,jdbcType=INTEGER},
+      tripleKill_count = #{triplekillCount,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+</mapper>
